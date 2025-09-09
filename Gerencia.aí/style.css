@@ -1,0 +1,91 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    width: 300px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0055aa;
+  }
+  
+  p {
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
+  /* ------------------------------
+   DASHBOARD
+--------------------------------*/
+.dashboard-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #bbb;
+  }
+  
+  .menu {
+    margin-bottom: 20px;
+  }
+  .menu button {
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background: #0066cc;
+    color: white;
+    cursor: pointer;
+  }
+  .menu button:hover {
+    background: #004999;
+  }
+  
+  .secao {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  

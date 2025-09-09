@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>gerencia.ai - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>📊 Dashboard - Gerencia.ai</h1>
+
+    <nav class="menu">
+      <button onclick="mostrarSecao('produtos')">📦 Produtos</button>
+      <button onclick="mostrarSecao('estoque')">📉 Estoque</button>
+      <button onclick="mostrarSecao('financeiro')">💰 Financeiro</button>
+      <button onclick="mostrarSecao('relatorios')">📑 Relatórios</button>
+    </nav>
+
+    <!-- Produtos -->
+    <section id="produtos" class="secao">
+      <h2>Cadastrar Produto</h2>
+      <form id="produtoForm">
+        <input type="text" id="produtoNome" placeholder="Nome do produto" required>
+        <input type="number" id="produtoPreco" placeholder="Preço (R$)" required>
+        <input type="number" id="produtoQtd" placeholder="Quantidade" required>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <h3>Lista de Produtos</h3>
+      <table id="tabelaProdutos"></table>
+    </section>
+
+    <!-- Estoque -->
+    <section id="estoque" class="secao hidden">
+      <h2>Controle de Estoque</h2>
+      <p id="estoqueInfo"></p>
+    </section>
+
+    <!-- Financeiro -->
+    <section id="financeiro" class="secao hidden">
+      <h2>Financeiro</h2>
+      <form id="financeiroForm">
+        <input type="text" id="financeiroDesc" placeholder="Descrição" required>
+        <input type="number" id="financeiroValor" placeholder="Valor (R$)" required>
+        <select id="financeiroTipo">
+          <option value="receber">A Receber</option>
+          <option value="pagar">A Pagar</option>
+        </select>
+        <button type="submit">Adicionar</button>
+      </form>
+      <h3>Movimentações</h3>
+      <ul id="listaFinanceiro"></ul>
+    </section>
+
+    <!-- Relatórios -->
+    <section id="relatorios" class="secao hidden">
+      <h2>Relatórios Semanais</h2>
+      <canvas id="graficoVendas" width="400" height="200"></canvas>
+      <p id="estoqueMedio"></p>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
