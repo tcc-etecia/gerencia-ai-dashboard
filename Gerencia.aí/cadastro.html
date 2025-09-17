@@ -1,23 +1,35 @@
-<!-- cadastro.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>gerencia.ai - Cadastro</title>
+  <title>Gerencia.aí - Cadastro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <h2>Criar Conta</h2>
-    <form id="cadastroForm">
-      <input type="text" id="cadastroNome" placeholder="Nome completo" required />
-      <input type="email" id="cadastroEmail" placeholder="Email" required />
-      <input type="password" id="cadastroSenha" placeholder="Senha" required />
-      <input type="password" id="cadastroConfirmar" placeholder="Confirmar senha" required />
-      <button type="submit">Cadastrar</button>
-    </form>
-    <p><a href="index.html">Voltar ao login</a></p>
-    <p id="cadastroMensagem"></p>
+<body class="login-body">
+  <div class="login-wrapper">
+    
+    <!-- Lado esquerdo -->
+    <div class="login-left">
+      <h1>Gerencia.aí</h1>
+      <p>Crie sua conta e comece a organizar seu negócio.</p>
+    </div>
+
+    <!-- Lado direito -->
+    <div class="login-right">
+      <h2>Criar Conta</h2>
+      <p class="subtitle">Preencha os campos abaixo para se cadastrar</p>
+      <form id="cadastroForm">
+        <input type="text" id="cadastroNome" placeholder="Nome completo" required />
+        <input type="email" id="cadastroEmail" placeholder="Digite seu email" required />
+        <input type="password" id="cadastroSenha" placeholder="Digite sua senha" required />
+        <input type="password" id="cadastroConfirmar" placeholder="Confirmar senha" required />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <div class="links">
+        <a href="index.html">Já tenho conta</a>
+      </div>
+      <p id="cadastroMensagem"></p>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
