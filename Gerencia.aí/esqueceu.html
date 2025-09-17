@@ -1,20 +1,32 @@
-<!-- esqueceu.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>gerencia.ai - Recuperar Senha</title>
+  <title>Gerencia.aí - Recuperar Senha</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <h2>Recuperar Senha</h2>
-    <form id="recuperarForm">
-      <input type="email" id="recuperarEmail" placeholder="Seu email" required />
-      <button type="submit">Enviar nova senha</button>
-    </form>
-    <p><a href="index.html">Voltar ao login</a></p>
-    <p id="recuperarMensagem"></p>
+<body class="login-body">
+  <div class="login-wrapper">
+
+    <!-- Lado esquerdo -->
+    <div class="login-left">
+      <h1>Gerencia.aí</h1>
+      <p>Esqueceu sua senha? Não se preocupe, vamos te ajudar.</p>
+    </div>
+
+    <!-- Lado direito -->
+    <div class="login-right">
+      <h2>Recuperar Senha</h2>
+      <p class="subtitle">Digite seu email para receber uma nova senha</p>
+      <form id="recuperarForm">
+        <input type="email" id="recuperarEmail" placeholder="Seu email" required />
+        <button type="submit">Enviar nova senha</button>
+      </form>
+      <div class="links">
+        <a href="index.html">Voltar ao login</a>
+      </div>
+      <p id="recuperarMensagem"></p>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
