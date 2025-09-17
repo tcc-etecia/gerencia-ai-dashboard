@@ -2,18 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>gerencia.ai - Dashboard</title>
+  <title>Gerencia.aí - Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dashboard-body">
   <div class="dashboard-container">
-    <h1>📊 Dashboard - Gerencia.ai</h1>
+    <h1>📊 Dashboard - Gerencia.aí</h1>
 
     <nav class="menu">
       <button onclick="mostrarSecao('produtos')">📦 Produtos</button>
       <button onclick="mostrarSecao('estoque')">📉 Estoque</button>
       <button onclick="mostrarSecao('financeiro')">💰 Financeiro</button>
       <button onclick="mostrarSecao('relatorios')">📑 Relatórios</button>
+      <button class="logout" onclick="logout()">🚪 Sair</button>
     </nav>
 
     <!-- Produtos -->
@@ -61,5 +62,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
