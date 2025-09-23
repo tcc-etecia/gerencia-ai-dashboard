@@ -195,4 +195,38 @@ function getData(chave) {
   });
 }
 
-  
+  // hashing simples (SHA-256) antes de salvar
+async function hashPassword(pw) {
+  const enc = new TextEncoder();
+  const buf = await crypto.subtle.digest('SHA-256', enc.encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+const cadastroForm = document.getElementById('cadastroForm');
+if (cadastroForm) {
+  cadastroForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('cadastroNome').value.trim();
+    const email = document.getElementById('cadastroEmail').value.trim();
+    const senha = document.getElementById('cadastroSenha').value;
+    const confirmar = document.getElementById('cadastroConfirmar').value;
+    const msgEl = document.getElementById('cadastroMensagem');
+
+    if (senha !== confirmar) {
+      msgEl.textContent = '❌ Senhas não conferem.';
+      return;
+    }
+
+    const usuarios = getData('usuarios'); // usa mesma utilidade do seu script
+    if (usuarios.some(u => u.email === email)) {
+      msgEl.textContent = '❌ Email já cadastrado.';
+      return;
+    }
+
+    const senhaHash = await hashPassword(senha);
+    usuarios.push({ nome, email, senhaHash });
+    salvarData('usuarios', usuarios);
+    msgEl.textContent = '✅ Cadastro realizado! Faça login.';
+    cadastroForm.reset();
+  });
+}
