@@ -20,7 +20,10 @@
       <p class="subtitle">Preencha seus dados para acessar</p>
       <form id="loginForm">
         <input type="email" id="loginEmail" placeholder="Digite seu email" required />
-        <input type="password" id="loginSenha" placeholder="Digite sua senha" required />
+        <div class="password-wrapper">
+          <input type="password" id="loginSenha" placeholder="Digite sua senha" required />
+          <span class="toggle-pass" onclick="toggleSenha('loginSenha', this)">👁️</span>
+        </div>        
         <button type="submit">Entrar</button>
       </form>
       <button class="secondary-btn" onclick="window.location.href='cadastro.html'">Criar conta</button>
