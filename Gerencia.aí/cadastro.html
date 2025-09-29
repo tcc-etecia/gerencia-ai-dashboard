@@ -19,12 +19,39 @@
       <h2>Criar Conta</h2>
       <p class="subtitle">Preencha os campos abaixo para se cadastrar</p>
       <form id="cadastroForm">
-        <input type="text" id="cadastroNome" placeholder="Nome completo" required />
-        <input type="email" id="cadastroEmail" placeholder="Digite seu email" required />
-        <input type="password" id="cadastroSenha" placeholder="Digite sua senha" required />
-        <input type="password" id="cadastroConfirmar" placeholder="Confirmar senha" required />
-        <button type="submit">Cadastrar</button>
+        <label for="cadastroNome">Nome completo</label>
+        <input type="text" id="cadastroNome" placeholder="Digite seu nome completo" required />
+      
+        <label for="cadastroEmail">E-mail</label>
+        <input type="email" id="cadastroEmail" placeholder="Digite seu e-mail" required />
+      
+        <label for="cadastroCpfCnpj">CPF ou CNPJ</label>
+        <input type="text" id="cadastroCpfCnpj" placeholder="Digite seu CPF ou CNPJ" required />
+      
+        <label for="cadastroTelefone">Telefone</label>
+        <input type="tel" id="cadastroTelefone" placeholder="(99) 99999-9999" required />
+      
+        <label for="cadastroSenha">Senha</label>
+        <div class="password-wrapper">
+          <input type="password" id="cadastroSenha" placeholder="Crie uma senha" required />
+          <span class="toggle-pass" onclick="toggleSenha('cadastroSenha', this)">👁️</span>
+        </div>
+      
+        <label for="cadastroConfirmar">Confirmar senha</label>
+        <div class="password-wrapper">
+          <input type="password" id="cadastroConfirmar" placeholder="Confirme sua senha" required />
+          <span class="toggle-pass" onclick="toggleSenha('cadastroConfirmar', this)">👁️</span>
+        </div>
+      
+        <button type="submit">Criar Conta</button>
       </form>
+      
+      <p id="cadastroMensagem" class="mensagem"></p>
+      
+      <div class="separator"><span>ou</span></div>
+      <div class="links">
+        <a href="index.html">Já tenho conta</a>
+      </div>      
       <div class="links">
         <a href="index.html">Já tenho conta</a>
       </div>
