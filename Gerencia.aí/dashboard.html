@@ -24,6 +24,7 @@
         <input type="text" id="produtoNome" placeholder="Nome do produto" required>
         <input type="number" id="produtoPreco" placeholder="Preço (R$)" required>
         <input type="number" id="produtoQtd" placeholder="Quantidade" required>
+        <input type="text" id="filtroProduto" placeholder="🔍 Buscar produto..." onkeyup="filtrarProdutos()">
         <button type="submit">Cadastrar</button>
       </form>
       <h3>Lista de Produtos</h3>
@@ -55,6 +56,7 @@
     <!-- Relatórios -->
     <section id="relatorios" class="secao hidden">
       <h2>Relatórios Semanais</h2>
+      <button onclick="exportarCSV()">📥 Exportar Relatório</button>
       <canvas id="graficoVendas" width="400" height="200"></canvas>
       <p id="estoqueMedio"></p>
     </section>
