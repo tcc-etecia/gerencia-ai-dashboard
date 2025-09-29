@@ -183,17 +183,32 @@ function getData(chave) {
     document.getElementById("estoqueMedio").innerText = `📦 Estoque médio: ${estoqueMedio}`;
   }
 
-    // Login sem validação (entra direto no dashboard)
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-    loginForm.addEventListener('submit', function (e) {
+   // --- LOGIN (novo, com validação) ---
+  const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+  loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    // cria usuário genérico só para sessão
-    const usuarioFake = { nome: "Usuário Teste", email: "teste@teste.com" };
-    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioFake));
-    window.location.href = "dashboard.html";
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginSenha").value;
+
+    const usuarios = getData("usuarios");
+    const msgEl = document.getElementById("loginMensagem");
+
+    // gera o hash da senha digitada
+    const senhaHash = await hashPassword(senha);
+
+    // procura usuário cadastrado
+    const user = usuarios.find(u => u.email === email && u.senhaHash === senhaHash);
+
+    if (user) {
+      localStorage.setItem("usuarioLogado", JSON.stringify(user));
+      window.location.href = "dashboard.html";
+    } else {
+      msgEl.textContent = "❌ Email ou senha inválidos.";
+    }
   });
 }
+
 
   // hashing simples (SHA-256) antes de salvar
 async function hashPassword(pw) {
@@ -224,9 +239,68 @@ if (cadastroForm) {
     }
 
     const senhaHash = await hashPassword(senha);
-    usuarios.push({ nome, email, senhaHash });
+    const cpfCnpj = document.getElementById('cadastroCpfCnpj').value.trim();
+    const telefone = document.getElementById('cadastroTelefone').value.trim();
+    usuarios.push({ nome, email, cpfCnpj, telefone, senhaHash });
     salvarData('usuarios', usuarios);
     msgEl.textContent = '✅ Cadastro realizado! Faça login.';
     cadastroForm.reset();
   });
 }
+
+function filtrarProdutos() {
+  const filtro = document.getElementById("filtroProduto").value.toLowerCase();
+  const linhas = document.querySelectorAll("#tabelaProdutos tr");
+
+  linhas.forEach((linha, i) => {
+    if (i === 0) return; // pula cabeçalho
+    const nome = linha.cells[0].textContent.toLowerCase();
+    linha.style.display = nome.includes(filtro) ? "" : "none";
+  });
+}
+
+function exportarCSV() {
+  const produtos = getData("produtos");
+  if (produtos.length === 0) {
+    alert("Nenhum produto cadastrado.");
+    return;
+  }
+
+  let csv = "Produto,Preço,Quantidade,Vendidos\n";
+  produtos.forEach(p => {
+    csv += `${p.nome},${p.preco},${p.qtd},${p.vendidos}\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "relatorio_produtos.csv";
+  link.click();
+}
+ 
+// Função para mostrar/ocultar senha
+function toggleSenha(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (input.type === "password") {
+    input.type = "text";
+    btn.textContent = "🙈"; // olho fechado
+  } else {
+    input.type = "password";
+    btn.textContent = "👁️"; // olho aberto
+  }
+}
+
+// Validação simples do CPF/CNPJ
+if (!/^\d{11}$|^\d{14}$/.test(cpfCnpj)) {
+  msgEl.textContent = "❌ CPF deve ter 11 dígitos ou CNPJ 14 dígitos.";
+  msgEl.className = "mensagem erro";
+  return;
+}
+
+// Validação simples de telefone
+if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone)) {
+  msgEl.textContent = "❌ Telefone inválido.";
+  msgEl.className = "mensagem erro";
+  return;
+}
+
