@@ -289,18 +289,3 @@ function toggleSenha(inputId, btn) {
     btn.textContent = "👁️"; // olho aberto
   }
 }
-
-// Validação simples do CPF/CNPJ
-if (!/^\d{11}$|^\d{14}$/.test(cpfCnpj)) {
-  msgEl.textContent = "❌ CPF deve ter 11 dígitos ou CNPJ 14 dígitos.";
-  msgEl.className = "mensagem erro";
-  return;
-}
-
-// Validação simples de telefone
-if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone)) {
-  msgEl.textContent = "❌ Telefone inválido.";
-  msgEl.className = "mensagem erro";
-  return;
-}
-
