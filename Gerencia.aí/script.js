@@ -289,3 +289,60 @@ function toggleSenha(inputId, btn) {
     btn.textContent = "👁️"; // olho aberto
   }
 }
+
+// MENU HAMBURGUER
+function toggleMenu() {
+  const menuLinks = document.querySelector('.menu-links');
+  menuLinks.classList.toggle('ativo');
+}
+
+// ----------------------------
+// MENU HAMBURGUER (mobile)
+// ----------------------------
+if (document.querySelector('.menu')) {
+  function toggleMenu() {
+    const menuLinks = document.querySelector('.menu-links');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    if (!menuLinks) return;
+    menuLinks.classList.toggle('ativo');
+    const expanded = menuLinks.classList.contains('ativo');
+    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', expanded);
+  }
+
+  // Fecha o menu ao clicar em qualquer link (em mobile)
+  document.querySelectorAll('.menu-links button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        const menuLinks = document.querySelector('.menu-links');
+        if (menuLinks) menuLinks.classList.remove('ativo');
+        const toggleBtn = document.querySelector('.menu-toggle');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Fecha o menu ao clicar fora (em mobile)
+  document.addEventListener('click', (e) => {
+    const menu = document.querySelector('.menu');
+    const menuLinks = document.querySelector('.menu-links');
+    if (!menu || !menuLinks) return;
+    if (window.innerWidth > 768) return;
+    if (!menu.contains(e.target)) {
+      menuLinks.classList.remove('ativo');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// ======================
+// MENU HAMBURGUER
+// ======================
+function toggleMenu() {
+  const menuLinks = document.querySelector('.menu-links');
+  if (!menuLinks) {
+    console.error('Elemento .menu-links não encontrado!');
+    return;
+  }
+  menuLinks.classList.toggle('ativo');
+}
