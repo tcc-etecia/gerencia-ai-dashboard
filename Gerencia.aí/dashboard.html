@@ -9,13 +9,22 @@
   <div class="dashboard-container">
     <h1>📊 Dashboard - Gerencia.aí</h1>
 
-    <nav class="menu">
-      <button onclick="mostrarSecao('produtos')">📦 Produtos</button>
-      <button onclick="mostrarSecao('estoque')">📉 Estoque</button>
-      <button onclick="mostrarSecao('financeiro')">💰 Financeiro</button>
-      <button onclick="mostrarSecao('relatorios')">📑 Relatórios</button>
-      <button class="logout" onclick="logout()">🚪 Sair</button>
-    </nav>
+<!-- MENU HAMBURGUER FUNCIONAL -->
+<nav class="menu">
+  <div class="menu-header">
+    <span class="menu-title">📊 Dashboard</span>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </div>
+
+  <div class="menu-links">
+    <button onclick="mostrarSecao('produtos')">📦 Produtos</button>
+    <button onclick="mostrarSecao('estoque')">📉 Estoque</button>
+    <button onclick="mostrarSecao('financeiro')">💰 Financeiro</button>
+    <button onclick="mostrarSecao('relatorios')">📑 Relatórios</button>
+    <button class="logout" onclick="logout()">🚪 Sair</button>
+  </div>
+</nav>
+
 
     <!-- Produtos -->
     <section id="produtos" class="secao">
